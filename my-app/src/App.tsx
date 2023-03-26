@@ -1,17 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Join from './components/Login';
 import Login from './components/Join';
 import { createStore } from 'redux';
+import rootReducer from './store/rootReducer';
+import { Provider } from 'react-redux';
 
 function App() {
   const store = createStore(rootReducer);
   return (
-    <div className="App">
+    <Provider store={store}>
       <Join />
       <Login />
-    </div>
+    </Provider>
   );
 }
 
