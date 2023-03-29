@@ -67,7 +67,6 @@ export  interface ILogin {
 }
 
 
-
 function LoginTwo({login: L}: IProps) {
   const [logins , setLogins] = useState(L);
   const dispatch = useDispatch();
@@ -78,21 +77,15 @@ function LoginTwo({login: L}: IProps) {
   const onEmailHandler = (e: { currentTarget: { value: React.SetStateAction<string>; }; }) => {
     setEmail(e.currentTarget.value);
   };
-
-  const onPasswordHandler = (e: { currentTarget: { value: React.SetStateAction<string>; }; }) => {
-    setPassword(e.currentTarget.value);
-  };
-  const onSubmitHandler = (e: { preventDefault: () => void; }) => {
-    e.preventDefault(); //이걸 써야 페이지가 초기화되는 것을 막을 수 있다.
-    // console.log('Email', Email);
-    // console.log('Password', Password);
-
-    let body = {
-      email: {Email},
-      password: {Password},
-    };
-
-    //dispatch(loginUser(body))
+  let body: {
+      email: {
+          Email: StringConstructor;
+      };
+      password: {
+          Password: StringConstructor;
+      };
+  }
+  dispatch(loginUser(body))
       //랜딩페이지(초기페이지로 렌딩)
       //로그인 성공시 '/home'로 이동.
       .then((response: { payload: { loginSuccess: any; }; }) => {
@@ -103,6 +96,17 @@ function LoginTwo({login: L}: IProps) {
           alert('아이디와 비밀번호 정보를 확인해주세요!');
         }
       });
+  const onPasswordHandler = (e: { currentTarget: { value: React.SetStateAction<string>; }; }) => {
+    setPassword(e.currentTarget.value);
+  };
+  const onSubmitHandler = (e: { preventDefault: () => void; }) => {
+    e.preventDefault(); //이걸 써야 페이지가 초기화되는 것을 막을 수 있다.
+    // console.log('Email', Email);
+    // console.log('Password', Password);
+
+    
+
+   
   };
 //   const navigateToJoin = () => {
 //     navigate('/Join');
