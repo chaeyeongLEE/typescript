@@ -1,5 +1,6 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
+import {IconNext} from "../../public/svgs";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <main className={styles.main}>
         <Image
           className={styles.logo}
-          src="/next.svg"
+          src={IconNext}
           alt="Next.js logo"
           width={180}
           height={38}
@@ -15,7 +16,7 @@ export default function Home() {
         />
         <ol>
           <li>
-            Get started by editing <code>src/app/page.tsx</code>.오호
+            Get started by editing <code>src/app/page.tsx</code>
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
@@ -29,7 +30,7 @@ export default function Home() {
           >
             <Image
               className={styles.logo}
-              src="/vercel.svg"
+              src="/svgs/vercel.svg"
               alt="Vercel logomark"
               width={20}
               height={20}
@@ -45,6 +46,7 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <span>test</span>
       </main>
       <footer className={styles.footer}>
         <a
@@ -54,7 +56,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src="/file.svg"
+            src="/svgs/file.svg"
             alt="File icon"
             width={16}
             height={16}
@@ -68,7 +70,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src="/window.svg"
+            src="/svgs/window.svg"
             alt="Window icon"
             width={16}
             height={16}
@@ -82,7 +84,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src="/globe.svg"
+            src="/svgs/globe.svg"
             alt="Globe icon"
             width={16}
             height={16}
@@ -93,3 +95,5 @@ export default function Home() {
     </div>
   );
 }
+
+// page.tsx 안에서 보여줄 컨텐츠들은 containers 폴더에 넣어두고 땡겨 쓰도록 !
