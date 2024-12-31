@@ -1,0 +1,23 @@
+h1 {
+  color: red;
+  width: 1280px;
+}
+
+p {
+  color: red;
+}
+
+.bg {
+  background-color: red;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+}
+
+.page {
+  background-color: #0053b3;
+}
+
+/*# sourceMappingURL=common.css.map */

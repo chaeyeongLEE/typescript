@@ -1,0 +1,17 @@
+$color: pink;
+$font: "";
+$size: 1280px;
+$gap: 16px;
+
+@mixin flexbox($display: flex, $direction: row, $align: center, $justify: center, $wrap: nowrap) {
+  display: $display;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+
+.ctas {
+  display: flex;
+  gap: $gap;
+}

@@ -1,0 +1,14 @@
+@use "@/styles/index" as s;
+
+.main {
+  @include s.flexbox(flex, column, center, center);
+  background-color: s.$color-gray-7;
+  padding: 1rem;
+    h2 {
+      color: s.$color-white;
+    }
+    .food h4 {
+      color: s.$color;
+    }
+
+}

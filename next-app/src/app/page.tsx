@@ -45,8 +45,8 @@ export default function Home() {
           >
             Read our docs
           </a>
+          <span>test</span>
         </div>
-        <span>test</span>
       </main>
       <footer className={styles.footer}>
         <a
