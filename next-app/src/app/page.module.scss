@@ -71,7 +71,7 @@ $button-secondary-hover: #f2f2f2;
         }
 
         &.secondary {
-          border-color: s.$color-white;
+          border-color: s.$color-pink;
           min-width: 180px;
         }
       }
@@ -80,6 +80,7 @@ $button-secondary-hover: #f2f2f2;
         color: s.$color-white;
         background-color: s.$color-teal;
         width: 100%;
+        border-radius: 1.2rem;
       }
     }
   }

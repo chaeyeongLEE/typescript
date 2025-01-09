@@ -2,7 +2,7 @@
 
 import CustomButton from "@/components/CustomButton/CustomButton";
 
-export default function List() {
+export default function Page() {
     function handleClick() {
         console.log('스크롤이 동작합니다.');
     }

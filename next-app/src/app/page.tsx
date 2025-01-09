@@ -24,8 +24,7 @@ export default function Home() {
         <div className={styles.ctas}>
           <a
             className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
+            href="/list"
             rel="noopener noreferrer"
           >
             <Image
@@ -35,17 +34,16 @@ export default function Home() {
               width={20}
               height={20}
             />
-            Deploy now
+            List
           </a>
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
+            href="/company"
             rel="noopener noreferrer"
             className={styles.secondary}
           >
-            Read our docs
+            Company
           </a>
-          <span>test</span>
+          <span>Test</span>
         </div>
       </main>
       <footer className={styles.footer}>
