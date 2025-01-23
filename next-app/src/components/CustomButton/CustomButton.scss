@@ -1,7 +1,7 @@
 @use "@/styles/index" as s;
 
 .listBtn {
-  background-color: blue;
+  background-color: s.$color-gray-1;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;

@@ -1,6 +1,7 @@
 "use client";
 
-import { PropsCustomButton } from "../../../next-env";
+import PropsCustomButton from "../../../new-types";
+
 import Image from "next/image";
 import "./CustomButton.scss";
 
@@ -15,7 +16,7 @@ const CustomButton = ({
 }: PropsCustomButton) => {
   return (
     <button
-      className={`custom-btn ${className}`} // className은 추가될 수 있도록 설정
+      className={`listBtn ${className}`} // className은 추가될 수 있도록 설정
       type={btnType}
       disabled={isDisabled}
       onClick={handleClick}>

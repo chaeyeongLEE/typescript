@@ -42,8 +42,8 @@ export default function Home() {
           <span>Test</span>
         </div>
         <CustomButton
-          type="button"
-          title="TestCustom"
+          btnType="button"
+          title="타이틀영역"
           className="buttonCommon"
         />
       </main>
