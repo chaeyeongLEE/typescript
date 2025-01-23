@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
-import {IconNext} from "../../public/svgs";
+import { IconNext } from "../../public/svgs";
+import CustomButton from "@/components/CustomButton/CustomButton";
 
 export default function Home() {
   return (
@@ -22,11 +23,7 @@ export default function Home() {
         </ol>
 
         <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="/list"
-            rel="noopener noreferrer"
-          >
+          <a className={styles.primary} href="/list" rel="noopener noreferrer">
             <Image
               className={styles.logo}
               src="/svgs/vercel.svg"
@@ -39,19 +36,22 @@ export default function Home() {
           <a
             href="/company"
             rel="noopener noreferrer"
-            className={styles.secondary}
-          >
+            className={styles.secondary}>
             Company
           </a>
           <span>Test</span>
         </div>
+        <CustomButton
+          type="button"
+          title="TestCustom"
+          className="buttonCommon"
+        />
       </main>
       <footer className={styles.footer}>
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <Image
             aria-hidden
             src="/svgs/file.svg"
@@ -64,8 +64,7 @@ export default function Home() {
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <Image
             aria-hidden
             src="/svgs/window.svg"
@@ -78,8 +77,7 @@ export default function Home() {
         <a
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <Image
             aria-hidden
             src="/svgs/globe.svg"
@@ -88,6 +86,16 @@ export default function Home() {
             height={16}
           />
           Go to nextjs.org →
+        </a>
+        <a>
+          <Image
+            aria-hidden
+            src="/svgs/github.svg"
+            alt="GitHub icon"
+            width={16}
+            height={16}
+          />
+          GitHub
         </a>
       </footer>
     </div>
