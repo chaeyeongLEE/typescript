@@ -40,6 +40,9 @@ export default function Home() {
             Company
           </a>
           <span>Test</span>
+          <a href="/practice" className={styles.primary}>
+            Practice
+          </a>
         </div>
         <CustomButton
           btnType="button"
