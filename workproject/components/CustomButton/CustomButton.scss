@@ -1,0 +1,28 @@
+@use "@/styles/index" as s;
+
+.listBtn {
+  background-color: s.$color-gray-1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin ButtonCommon {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+}
+
+
+.buttonCommon {
+  @include ButtonCommon;
+
+  span {
+    color: s.$color-orange;
+  }
+}
