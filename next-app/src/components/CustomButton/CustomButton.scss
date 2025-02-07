@@ -1,12 +1,28 @@
 @use "@/styles/index" as s;
 
 .listBtn {
-  background-color: s.$color-gray-1;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
+  background-color: s.$color-white;
+  height: 36px;
+  padding: 0 25px;
+  top: 20px;
+  right: 20px;
+  border-radius: 18px;
+  box-shadow: rgb(240, 242, 248) 0 0 0 2px;
   border: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease-out, padding 0.3s ease-out; // box-shadow와 padding 변화 시 애니메이션 적용
+  will-change: box-shadow, padding;
+
+  title {
+    color: pink;
+  }
+}
+
+.listBtn:hover {
   cursor: pointer;
+  box-shadow: rgb(200, 200, 200) 0 0 0 4px; // 테두리 굵기만 증가
 }
 
 @mixin ButtonCommon {

@@ -1,3 +1,325 @@
-.container {
-  color: pink;
+@use "@/styles/index" as s;
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  grid-template-rows: repeat(4, 280px);
+  gap: 16px;
+  padding: 20px;
+  background-color: rgb(247, 242, 242);
+  justify-content: center;
+
+  section {
+    border: none;
+    border-radius: 32px;
+    padding: 16px;
+    @include s.flexbox(flex, column, center, center);
+    box-shadow: transparent 0 0 0 2px inset;
+  }
+
+  .arrow {
+    position: relative;
+    background: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; // 18px 대신 50% 사용
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover::after {
+      width: 120%;
+      height: 120%;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .arrow:hover {
+    cursor: pointer;
+  }
+
+  .profile {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 100%;
+    width: 100%;
+    @include s.flexbox(flex, column, center, center);
+    padding: 36px 42px;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+
+    p {
+      font-size: 15px;
+      line-height: 26px;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+    }
+  }
+
+  .map {
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #81d4fa;
+  }
+
+  .star {
+    grid-column: span 1;
+    grid-row: span 2;
+    background-image: url("../../../public/images/bgImg1.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    image {
+      width: 280px;
+    }
+  }
+
+  .card {
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: rgb(152, 208, 255);
+
+
+    a {
+      margin-top: auto;
+      margin-right: auto;
+    }
+  }
+
+  .twitterIcon {
+    margin-top: 85px;
+  }
+
+  .cards {
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffcc80;
+  }
+
+  .spotify {
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffffff;
+    padding: 32px 38px;
+
+    img {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      margin-right: auto;
+      margin-bottom: auto;
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-right: auto;
+      gap: 6px;
+    }
+  }
+
+  .spotifyBox {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 40px;
+    width: 40px;
+  }
+
+  .spotifyMusic {
+    width: 6px;
+    background-color: #1db954;
+    animation: equalizer 1s infinite ease-in-out;
+  }
+
+  .spotifyMusic:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .spotifyMusic:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .spotifyMusic:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  .article {
+    grid-column: span 1;
+    grid-row: span 2;
+    background-image: url("../../../public/images/bgImg3.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .wideCard {
+    grid-column: span 2;
+    grid-row: span 1;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 17px;
+    padding: 40px 44px;
+
+    p {
+      letter-spacing: 1.5px;
+    }
+  }
+
+  .textBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 17px;
+
+  }
+
+  .box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    p {
+      font-size: 15px;
+      line-height: 26px;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+      color: #cccccc;
+    }
+  }
+
+  .darkMode {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: rgb(255, 255, 255);
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+
+  .admin {
+    grid-column: span 2;
+    grid-row: span 1;
+    background-image: url("../../../public/images/bgImg5.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      max-width: 110%; /* 부모의 너비를 초과하지 않도록 */
+      height: auto; /* 원본 이미지 비율을 유지 */
+      object-fit: contain; /* 이미지가 부모 크기에 맞추어 비율을 유지 */
+    }
+  }
+
+  .subscribe {
+    grid-column: span 2;
+    grid-row: span 1;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 17px;
+    font-size: 17px;
+    padding: 40px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 26px;
+      letter-spacing: 1.5px;
+      font-weight: 400;
+      color: rgb(13, 17, 23);
+    }
+
+    input {
+      border: none;
+      border-bottom: 2px solid #cccccc;
+      width: 100%;
+    }
+
+    input::placeholder {
+      color: #cccccc;
+      font-size: 17px;
+    }
+  }
+}
+
+@keyframes equalizer {
+  0%, 100% {
+    height: 20%;
+  }
+  50% {
+    height: 100%;
+  }
 }
