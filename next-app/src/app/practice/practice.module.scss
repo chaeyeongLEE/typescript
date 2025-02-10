@@ -1,13 +1,50 @@
 @use "@/styles/index" as s;
 
+.container {
+  background-color: rgb(247, 242, 242);
+  padding: 30px;
+  @include s.flexbox(flex, column, center, center);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 23px;
+  gap: 20px;
+  font-size: 14px;
+  padding: 5px;
+  width: 400px;
+
+  .nav-item {
+    position: relative;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .active {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .dashboard {
   display: grid;
   grid-template-columns: repeat(4, 280px);
   grid-template-rows: repeat(4, 280px);
   gap: 16px;
   padding: 20px;
-  background-color: rgb(247, 242, 242);
   justify-content: center;
+  margin-top: 10px;
 
   section {
     border: none;
