@@ -56,14 +56,13 @@
   }
 
   .profile {
-    grid-column: span 2;
-    grid-row: span 1;
     height: 100%;
     width: 100%;
-    @include s.flexbox(flex, column, center, center);
+    @include s.flexbox(flex, column, flex-start, center);
     padding: 36px 42px;
     overflow: hidden;
     background: rgb(255, 255, 255);
+    gap: 20px;
 
     p {
       font-size: 15px;
@@ -71,17 +70,21 @@
       letter-spacing: 0.5px;
       font-weight: 400;
     }
+
+    button {
+      background: none;
+      border: none;
+      padding-bottom: 15px;
+    }
+
   }
 
   .map {
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #81d4fa;
+    @include s.flexbox(flex, column, center, center);
+    background-color: #98d0ff;
   }
 
   .star {
-    grid-column: span 1;
-    grid-row: span 2;
     background-image: url("../../../public/images/bgImg1.svg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -93,8 +96,8 @@
   }
 
   .card {
-    grid-column: span 1;
-    grid-row: span 1;
+    @include s.flexbox(flex, column, center, center);
+    height: 100vh;
     background-color: rgb(152, 208, 255);
 
 
@@ -106,21 +109,18 @@
 
   .twitterIcon {
     @include s.flexbox(flex, column, center, center);
-    max-width: 50%;
-    max-height: 50%;
+    margin-top: 80px;
   }
 
   .cards {
-    grid-column: span 1;
-    grid-row: span 1;
     background-color: #ffcc80;
   }
 
   .spotify {
-    grid-column: span 1;
-    grid-row: span 1;
     background-color: #ffffff;
     padding: 32px 38px;
+    @include s.flexbox(flex, column, center, center);
+
 
     img {
       width: 54px;
@@ -131,18 +131,49 @@
     }
 
     article {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      @include s.flexbox(flex, column, flex-start, flex-start);
       margin-right: auto;
       gap: 6px;
     }
   }
 
+  .arrow {
+    position: relative;
+    background: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    @include s.flexbox(flex, column, center, center);
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover::after {
+      width: 120%;
+      height: 120%;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .arrow:hover {
+    cursor: pointer;
+  }
+
   .spotifyBox {
-    display: flex;
+    @include s.flexbox(flex, column, flex-end, ceter);
     gap: 4px;
-    align-items: flex-end;
     height: 40px;
     width: 40px;
   }
@@ -166,20 +197,14 @@
   }
 
   .article {
-    grid-column: span 1;
-    grid-row: span 2;
     background-image: url("../../../public/images/bgImg3.svg");
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   .wideCard {
-    grid-column: span 2;
-    grid-row: span 1;
+    @include s.flexbox(flex, column, flex-start, space-between);
     background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 20px;
     font-size: 17px;
     padding: 40px 44px;
@@ -190,18 +215,13 @@
   }
 
   .textBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    @include s.flexbox(flex, column, flex-start, space-between);
     gap: 17px;
 
   }
 
   .box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include s.flexbox(flex, row, center, space-between);
     width: 100%;
 
     p {
@@ -214,9 +234,9 @@
   }
 
   .darkMode {
-    grid-column: span 1;
-    grid-row: span 1;
+    @include s.flexbox(flex, column, center, center);
     background: rgb(255, 255, 255);
+    height: 100vh;
   }
 
   .switch {
@@ -265,8 +285,6 @@
   }
 
   .admin {
-    grid-column: span 2;
-    grid-row: span 1;
     background-image: url("../../../public/images/bgImg5.svg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -275,28 +293,21 @@
 
     img {
       max-width: 100%;
-      height: auto; /* 원본 이미지 비율을 유지 */
-      object-fit: contain; /* 이미지가 부모 크기에 맞추어 비율을 유지 */
+      height: auto;
+      object-fit: contain;
     }
   }
 
   .subscribe {
-    grid-column: span 2;
-    grid-row: span 1;
     background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 17px;
     font-size: 17px;
     padding: 40px;
 
     div {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      @include s.flexbox(flex, column, flex-start, space-between);
       width: 100%;
       padding: 0;
+      gap: 10px;
     }
 
     p {
@@ -311,20 +322,22 @@
       border: none;
       border-bottom: 2px solid #cccccc;
       width: 100%;
+      padding: 13px;
     }
 
     input::placeholder {
       color: #cccccc;
       font-size: 17px;
     }
-  }
-}
 
-@keyframes equalizer {
-  0%, 100% {
-    height: 20%;
-  }
-  50% {
-    height: 100%;
+    aside {
+      @include s.flexbox(flex, row, center, space-between);
+      margin-top: 15px;
+
+      p {
+        padding-left: 100px;
+      }
+    }
+
   }
 }
