@@ -3,7 +3,7 @@
 
 .container {
   background-color: rgb(247, 242, 242);
-  padding: 30px;
+  padding: 47px;
   @include s.flexbox(flex, column, center, center);
 }
 
@@ -12,15 +12,15 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 23px;
-  gap: 20px;
+  gap: 5px;
   font-size: 14px;
   padding: 5px;
-  width: 400px;
+  width: 300px;
 
   .nav-item {
     position: relative;
     padding: 8px 16px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #333;
     border-radius: 20px;
@@ -71,10 +71,19 @@
       font-weight: 400;
     }
 
-    button {
-      background: none;
-      border: none;
-      padding-bottom: 15px;
+    div {
+      @include s.flexbox(flex, row, flex-start, space-between);
+      width: 100%;
+      padding: 0;
+
+      button {
+        height: 40px;
+        font-weight: 700;
+      }
+
+      button :hover {
+        cursor: pointer;
+      }
     }
 
   }
@@ -290,9 +299,10 @@
     background-repeat: no-repeat;
     overflow: hidden;
     position: relative;
+    padding: 0;
 
     img {
-      max-width: 100%;
+      max-width: 103%;
       height: auto;
       object-fit: contain;
     }

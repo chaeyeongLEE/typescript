@@ -22,7 +22,7 @@
 
 .listBtn:hover {
   cursor: pointer;
-  box-shadow: rgb(200, 200, 200) 0 0 0 4px; // 테두리 굵기만 증가
+  box-shadow: #f0f2f8 0 0 0 4px; // 테두리 굵기만 증가
 }
 
 @mixin ButtonCommon {

@@ -18,10 +18,18 @@ import CustomButton from "@/components/CustomButton/CustomButton";
 import memoji1 from "../../../public/images/memoji1.png";
 import memoji2 from "../../../public/images/memoji2.png";
 
-// 메모지 import하기
+type Widget = {
+  i: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+};
+
+type Layouts = Record<string, Widget[]>;
 
 const tabs = ["All", "About", "Projects", "Media"];
-const layouts = {
+const layouts: Layouts = {
   All: [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "map", x: 2, y: 0, w: 1, h: 1 },
@@ -77,7 +85,7 @@ const layouts = {
     { i: "star", x: 3, y: 1, w: 1, h: 2 },
   ],
 };
-const highlightMap = {
+const highlightMap: Record<string, string[]> = {
   All: [],
   About: ["map", "profile", "card"],
   Projects: ["admin", "article", "star"],
@@ -114,6 +122,34 @@ const Dashboard = () => {
     console.log("버튼 클릭 됨");
   }
 
+  function isToggleClick() {
+    const memojiElement = document.getElementById("memoji"); // ✅ 이미지 요소 가져오기
+
+    if (memojiElement) {
+      gsap.to(memojiElement, {
+        duration: 0.3,
+        opacity: 0,
+        scale: 0.5,
+        rotate: -90,
+        onComplete: () => {
+          setMemoji(memoji === memoji1 ? memoji2 : memoji1);
+
+          gsap.fromTo(
+            memojiElement,
+            { opacity: 0, scale: 0.5, rotate: -90 },
+            {
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            }
+          );
+        },
+      });
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.nav}>
@@ -134,7 +170,8 @@ const Dashboard = () => {
           cols={4}
           rowHeight={280}
           width={1180}
-          isDraggable={false}
+          draggableCancel=".no-drag"
+          isDraggable={true}
           isResizable={false}>
           {layout.map((item) => (
             <div
@@ -148,12 +185,8 @@ const Dashboard = () => {
                     : "0.3",
               }}>
               {item.i === "profile" && (
-                <div>
-                  <button
-                    onClick={() => {
-                      setMemoji(memoji === memoji1 ? memoji2 : memoji1);
-                    }}
-                    className={styles.lockButton}>
+                <>
+                  <div>
                     <Image
                       alt="memogi1"
                       src={memoji}
@@ -161,16 +194,22 @@ const Dashboard = () => {
                         width: "90px",
                         height: "90px",
                       }}
+                      id="memoji"
                     />
-                  </button>
-
+                    <CustomButton
+                      title="Toggle Lockdown"
+                      type="button"
+                      disabled={false}
+                      className="no-drag"
+                      handleClick={isToggleClick}></CustomButton>
+                  </div>
                   <p>
                     I’m <span style={{ fontSize: "40px" }}>nev</span>, a
                     developer and product designer from Ireland. I'm interested
                     in React, Node, Product Design, Jamstack, Startups,
                     Cryptocurrencies and Music.
                   </p>
-                </div>
+                </>
               )}
               {item.i === "map" && <div>Map</div>}
               {item.i === "star" && (
@@ -199,7 +238,7 @@ const Dashboard = () => {
                     src={twitterIcon}
                     className={styles.twitterIcon}
                   />
-                  <a className={styles.arrow}>
+                  <a className={`${styles.arrow} no-drag`}>
                     <Image alt="" src={arrowIcon} />
                   </a>
                 </>
@@ -224,7 +263,7 @@ const Dashboard = () => {
                       title="Read more"
                       type="button"
                       disabled={false}
-                      className="subscribeBtn"
+                      className="no-drag"
                       handleClick={isSubscribeClick}>
                       Subscribe
                     </CustomButton>
@@ -233,7 +272,7 @@ const Dashboard = () => {
                 </>
               )}
               {item.i === "darkMode" && (
-                <label className={styles.switch}>
+                <label className={`${styles.switch} no-drag`}>
                   <input type="checkbox" />
                   <span className={styles.slider}></span>
                 </label>
@@ -249,16 +288,18 @@ const Dashboard = () => {
                     <br />
                     ongoing learnings.
                   </p>
-                  <input type="text" placeholder="Email address" />
+                  <input
+                    type="text"
+                    placeholder="Email address"
+                    className="no-drag"
+                  />
                   <aside>
                     <CustomButton
-                      title="subscribe"
+                      title="Subscribe"
                       type="button"
                       disabled={false}
-                      className="subscribeBtn"
-                      handleClick={isSubscribeClick}>
-                      Subscribe
-                    </CustomButton>
+                      className="no-drag"
+                      handleClick={isSubscribeClick}></CustomButton>
                     <p>
                       You'll be subscriber number{" "}
                       <span style={{ fontSize: "30px" }}>542</span>
