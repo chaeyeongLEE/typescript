@@ -223,9 +223,12 @@ const Dashboard = () => {
                 <>
                   <Image alt="spotify" src={spotify} />
                   <article>
-                    <p style={{ color: "rgb(110, 210, 183)", fontWeight: 500 }}>
-                      Offline. Last played
-                    </p>
+                    <div className={styles.equalizer}>
+                      <span className={styles.bar}></span>
+                      <span className={styles.bar}></span>
+                      <span className={styles.bar}></span>
+                      <p>Offline. Last played</p>
+                    </div>
                     <h2>I Don't Belong</h2>
                     <p style={{ letterSpacing: "1.2px" }}>Fontaines D.C.</p>
                   </article>
