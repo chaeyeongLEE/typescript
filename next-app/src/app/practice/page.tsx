@@ -23,9 +23,15 @@ type Widget = {
 
 type Layouts = Record<string, Widget[]>;
 
-const tabs = ["All", "About", "Projects", "Media"];
+const tabs = [
+  "전국 사무소",
+  "업무 사례",
+  "변호사 매칭",
+  "상담 센터",
+  "임시 테스트",
+];
 const layouts: Layouts = {
-  All: [
+  "전국 사무소": [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
     { i: "desc", x: 0, y: 1, w: 2, h: 1 },
@@ -42,9 +48,12 @@ const layouts: Layouts = {
 
     { i: "article", x: 2, y: 1, w: 1, h: 1 },
     { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
-    { i: "news", x: 0, y: 5, w: 4, h: 1 },
+
+    { i: "broad", x: 0, y: 5, w: 1, h: 1 },
+    { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
+    { i: "news", x: 2, y: 5, w: 2, h: 1 },
   ],
-  About: [
+  "업무 사례": [
     { i: "example", x: 0, y: 0, w: 1, h: 1 },
     { i: "card", x: 1, y: 0, w: 1, h: 1 }, //업무사례
     { i: "article", x: 2, y: 0, w: 1, h: 1 },
@@ -61,9 +70,11 @@ const layouts: Layouts = {
     { i: "counsel", x: 2, y: 4, w: 1, h: 1 },
 
     { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
-    { i: "news", x: 0, y: 5, w: 4, h: 1 },
+    { i: "broad", x: 0, y: 5, w: 1, h: 1 },
+    { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
+    { i: "news", x: 2, y: 5, w: 2, h: 1 },
   ],
-  Projects: [
+  "변호사 매칭": [
     { i: "wideCard", x: 0, y: 0, w: 2, h: 2 },
     { i: "profile", x: 0, y: 1, w: 2, h: 1 },
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
@@ -79,9 +90,11 @@ const layouts: Layouts = {
     { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
 
     { i: "article", x: 2, y: 3, w: 1, h: 1 },
-    { i: "news", x: 3, y: 3, w: 4, h: 1 },
+    { i: "broad", x: 0, y: 5, w: 1, h: 1 },
+    { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
+    { i: "news", x: 2, y: 5, w: 2, h: 1 },
   ],
-  Media: [
+  "상담 센터": [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "desc", x: 0, y: 0, w: 2, h: 1 },
 
@@ -98,14 +111,38 @@ const layouts: Layouts = {
     { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
 
     { i: "article", x: 2, y: 3, w: 1, h: 1 },
-    { i: "news", x: 3, y: 3, w: 4, h: 1 },
+    { i: "broad", x: 0, y: 5, w: 1, h: 1 },
+    { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
+    { i: "news", x: 2, y: 5, w: 2, h: 1 },
+  ],
+  "임시 테스트": [
+    { i: "profile", x: 0, y: 0, w: 2, h: 1 },
+    { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
+    { i: "desc", x: 0, y: 1, w: 2, h: 1 },
+
+    { i: "star", x: 3, y: 0, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 1, h: 1 },
+    { i: "card", x: 1, y: 1, w: 1, h: 1 },
+
+    { i: "darkMode", x: 1, y: 3, w: 2, h: 2 }, //의뢰인 후기
+    { i: "subscribe", x: 3, y: 3, w: 1, h: 1 }, //Q&A라운지
+
+    { i: "qna", x: 3, y: 4, w: 1, h: 1 },
+    // { i: "counsel", x: 2, y: 4, w: 1, h: 1 },
+
+    { i: "article", x: 2, y: 1, w: 1, h: 1 },
+    { i: "wideCard", x: 0, y: 3, w: 1, h: 2 }, //변호사 매칭
+
+    { i: "broad", x: 0, y: 5, w: 1, h: 1 },
+    { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
+    { i: "news", x: 2, y: 5, w: 2, h: 1 },
   ],
 };
 const highlightMap: Record<string, string[]> = {
-  All: [],
-  About: ["card", "example", "article", "star", "mapSec"],
-  Projects: ["wideCard", "mapSec"],
-  Media: [
+  "전국 사무소": [],
+  "업무 사례": ["card", "example", "article", "star", "mapSec"],
+  "변호사 매칭": ["wideCard", "mapSec"],
+  "상담 센터": [
     "subscribe",
     "darkMode",
     "counsel",
@@ -114,11 +151,29 @@ const highlightMap: Record<string, string[]> = {
     "desc",
     "mapSec",
   ],
+  "임시 테스트": [
+    "subscribe",
+    "darkMode",
+    "counsel",
+    "qna",
+    "profile",
+    "desc",
+    "mapSec",
+    "card",
+    "example",
+    "article",
+    "star",
+    "mapSec",
+    "youtube",
+    "news",
+    "broad",
+    "wideCard",
+  ],
 };
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("All");
-  const [layout, setLayout] = useState(layouts["All"]);
+  const [activeTab, setActiveTab] = useState("전국 사무소");
+  const [layout, setLayout] = useState(layouts["전국 사무소"]);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [memoji, setMemoji] = useState(memoji1);
 
@@ -200,14 +255,14 @@ const Dashboard = () => {
             margin: "0 auto",
           }}
           isDraggable={true}
-          isResizable={false}>
+          isResizable={true}>
           {layout.map((item) => (
             <div
               key={item.i}
               className={styles[item.i]}
               style={{
                 opacity:
-                  activeTab === "All" ||
+                  activeTab === "전국 사무소" ||
                   highlightMap[activeTab]?.includes(item.i)
                     ? "1"
                     : "0.3",
@@ -284,7 +339,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
@@ -302,7 +357,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
@@ -320,7 +375,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
@@ -357,7 +412,7 @@ const Dashboard = () => {
                       disabled={false}
                       className="no-drag"
                       handleClick={isSubscribeClick}>
-                      Subscribe
+                      변호사 찾기
                     </CustomButton>
                   </aside>
                 </>
@@ -375,7 +430,6 @@ const Dashboard = () => {
               {item.i === "subscribe" && (
                 <div>
                   <h2>Q&A 라운지</h2>
-
                   <p>
                     소송이 처음이라 걱정되시죠?
                     <br />
@@ -404,13 +458,28 @@ const Dashboard = () => {
                   </a>
                 </div>
               )}
+
+              {item.i === "broad" && (
+                <div>
+                  <h2>언론보도</h2>
+                  <a className={`${styles.arrow} no-drag`}>
+                    <Image alt="" src={arrowIcon} />
+                  </a>
+                </div>
+              )}
+
+              {item.i === "youtube" && (
+                <div>
+                  <h2>Youtube</h2>
+                  <a className={`${styles.arrow} no-drag`}>
+                    <Image alt="" src={arrowIcon} />
+                  </a>
+                </div>
+              )}
+
               {item.i === "news" && (
                 <>
                   <h2>소식과 자료</h2>
-                  <p>
-                    <span style={{ fontWeight: 700 }}> 언론보도 </span> 뉴스레터
-                    칼럼 법률 정보
-                  </p>
                   <span>
                     [언론보도] 게시글 제목 입니다. 게시글 제목 입니다. 게시글
                     제목입니다. 게시글 제목 입니다. 게시글 제목 입니다
