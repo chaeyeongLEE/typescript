@@ -27,7 +27,7 @@ const tabs = ["All", "About", "Projects", "Media"];
 const layouts: Layouts = {
   All: [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
-    { i: "map", x: 2, y: 0, w: 2, h: 2 },
+    { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
     { i: "desc", x: 0, y: 1, w: 2, h: 1 },
 
     { i: "star", x: 3, y: 0, w: 1, h: 1 },
@@ -45,69 +45,75 @@ const layouts: Layouts = {
     { i: "news", x: 0, y: 5, w: 4, h: 1 },
   ],
   About: [
-    { i: "profile", x: 0, y: 0, w: 2, h: 1 },
-    { i: "map", x: 2, y: 0, w: 1, h: 1 },
-    { i: "card", x: 3, y: 0, w: 1, h: 1 }, //트위터
-    {
-      i: "desc" + "",
-      x: 0,
-      y: 1,
-      w: 1,
-      h: 1,
-    },
-    { i: "darkMode", x: 1, y: 2, w: 1, h: 1 },
-    { i: "article", x: 2, y: 1, w: 1, h: 2 },
-    { i: "star", x: 3, y: 1, w: 1, h: 2 },
-    { i: "wideCard", x: 0, y: 3, w: 2, h: 1 },
-    { i: "news", x: 0, y: 5, w: 2, h: 1 },
-    { i: "subscribe", x: 2, y: 5, w: 2, h: 1 },
+    { i: "example", x: 0, y: 0, w: 1, h: 1 },
+    { i: "card", x: 1, y: 0, w: 1, h: 1 }, //업무사례
+    { i: "article", x: 2, y: 0, w: 1, h: 1 },
+    { i: "star", x: 3, y: 0, w: 1, h: 1 },
+
+    { i: "profile", x: 0, y: 1, w: 2, h: 1 },
+    { i: "mapSec", x: 2, y: 1, w: 2, h: 2 },
+    { i: "desc", x: 0, y: 1, w: 2, h: 1 },
+
+    { i: "darkMode", x: 3, y: 3, w: 1, h: 1 },
+    { i: "subscribe", x: 2, y: 3, w: 1, h: 1 },
+
+    { i: "qna", x: 3, y: 4, w: 1, h: 1 },
+    { i: "counsel", x: 2, y: 4, w: 1, h: 1 },
+
+    { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
+    { i: "news", x: 0, y: 5, w: 4, h: 1 },
   ],
   Projects: [
-    {
-      i: "desc" + "",
-      x: 0,
-      y: 3,
-      w: 1,
-      h: 1,
-    },
+    { i: "wideCard", x: 0, y: 0, w: 2, h: 2 },
     { i: "profile", x: 0, y: 1, w: 2, h: 1 },
-    { i: "map", x: 2, y: 2, w: 1, h: 1 },
-    { i: "card", x: 3, y: 2, w: 1, h: 1 }, //트위터
+    { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
+    { i: "desc", x: 0, y: 1, w: 2, h: 1 },
 
-    { i: "darkMode", x: 1, y: 2, w: 1, h: 1 },
+    { i: "star", x: 3, y: 2, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 1, h: 1 },
+    { i: "card", x: 1, y: 1, w: 1, h: 1 },
 
-    { i: "news", x: 0, y: 0, w: 2, h: 1 },
-    { i: "article", x: 2, y: 0, w: 1, h: 2 },
-    { i: "star", x: 3, y: 0, w: 1, h: 2 },
+    { i: "darkMode", x: 3, y: 0, w: 1, h: 1 }, //의뢰인 후기
+    { i: "subscribe", x: 2, y: 0, w: 1, h: 1 }, //Q&A라운지
+    { i: "qna", x: 3, y: 0, w: 1, h: 1 }, //1:1상담
+    { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
 
-    { i: "wideCard", x: 0, y: 3, w: 2, h: 1 },
-    { i: "subscribe", x: 2, y: 5, w: 2, h: 1 },
+    { i: "article", x: 2, y: 3, w: 1, h: 1 },
+    { i: "news", x: 3, y: 3, w: 4, h: 1 },
   ],
   Media: [
-    { i: "news", x: 0, y: 3, w: 2, h: 1 },
-    { i: "profile", x: 0, y: 5, w: 2, h: 1 },
-    { i: "subscribe", x: 2, y: 0, w: 2, h: 1 },
-    { i: "wideCard", x: 0, y: 0, w: 2, h: 1 },
+    { i: "profile", x: 0, y: 0, w: 2, h: 1 },
+    { i: "desc", x: 0, y: 0, w: 2, h: 1 },
 
-    { i: "darkMode", x: 2, y: 3, w: 1, h: 1 },
-    { i: "map", x: 1, y: 2, w: 1, h: 1 },
-    { i: "card", x: 3, y: 3, w: 1, h: 1 }, //트위터
-    {
-      i: "desc" + "",
-      x: 0,
-      y: 1,
-      w: 1,
-      h: 1,
-    },
-    { i: "article", x: 2, y: 1, w: 1, h: 2 },
-    { i: "star", x: 3, y: 1, w: 1, h: 2 },
+    { i: "wideCard", x: 0, y: 1, w: 2, h: 2 },
+    { i: "mapSec", x: 2, y: 1, w: 2, h: 2 },
+
+    { i: "star", x: 3, y: 2, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 1, h: 1 },
+    { i: "card", x: 1, y: 1, w: 1, h: 1 },
+
+    { i: "darkMode", x: 3, y: 0, w: 1, h: 1 }, //의뢰인 후기
+    { i: "subscribe", x: 2, y: 0, w: 1, h: 1 }, //Q&A라운지
+    { i: "qna", x: 3, y: 0, w: 1, h: 1 }, //1:1상담
+    { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
+
+    { i: "article", x: 2, y: 3, w: 1, h: 1 },
+    { i: "news", x: 3, y: 3, w: 4, h: 1 },
   ],
 };
 const highlightMap: Record<string, string[]> = {
   All: [],
-  About: ["map", "profile", "card"],
-  Projects: ["news", "article", "star"],
-  Media: ["subscribe", "wideCard", "desc" + ""],
+  About: ["card", "example", "article", "star", "mapSec"],
+  Projects: ["wideCard", "mapSec"],
+  Media: [
+    "subscribe",
+    "darkMode",
+    "counsel",
+    "qna",
+    "profile",
+    "desc",
+    "mapSec",
+  ],
 };
 
 const Dashboard = () => {
@@ -189,6 +195,10 @@ const Dashboard = () => {
           rowHeight={230}
           width={1100}
           draggableCancel=".no-drag"
+          style={{
+            width: "1050px",
+            margin: "0 auto",
+          }}
           isDraggable={true}
           isResizable={false}>
           {layout.map((item) => (
@@ -228,7 +238,7 @@ const Dashboard = () => {
                   </p>
                 </>
               )}
-              {item.i === "map" && <div>Map</div>}
+              {item.i === "mapSec" && <div>mapSec</div>}
               {item.i === "example" && (
                 <h4 style={{ fontWeight: 700 }}>
                   YK는 16,500+ 명에게 희망이 되었습니다.

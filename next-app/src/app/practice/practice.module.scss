@@ -2,6 +2,7 @@
 
 
 .container {
+  width: 100%;
   padding: 47px;
   @include s.flexbox(flex, column, center, center);
 }
@@ -14,7 +15,7 @@
   gap: 5px;
   font-size: 14px;
   padding: 5px;
-  width: 300px;
+  width: 500px;
 
   .nav-item {
     position: relative;
@@ -38,13 +39,8 @@
 }
 
 .dashboard {
-  display: grid;
-  grid-template-columns: repeat(4, 230px);
-  grid-template-rows: repeat(4, 230px);
-  gap: 16px;
+  width: 100%;
   padding: 20px;
-  justify-content: center;
-  margin-top: 10px;
 
   div {
     border: none;
@@ -87,7 +83,7 @@
 
   }
 
-  .map {
+  .mapSec {
     @include s.flexbox(flex, column, center, center);
     background-color: #98d0ff;
   }
@@ -141,7 +137,7 @@
 
     div {
       @include s.flexbox(flex, row, center, center);
-      gap: 30px;
+      gap: 20px;
     }
 
     section {
@@ -276,7 +272,7 @@
   .dropBtn {
     background-color: s.$color-white;
     color: s.$color-black;
-    padding: 10px 16px;
+    padding: 10px;
     border: 1px solid #f0f2f8;
     cursor: pointer;
     width: 100%;
@@ -439,5 +435,8 @@
       @include s.flexbox(flex, column, flex-start, space-between);
       background-color: #ffffff;
     }
+
   }
+
 }
+
