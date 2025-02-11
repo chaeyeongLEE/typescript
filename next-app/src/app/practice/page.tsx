@@ -23,9 +23,9 @@ type Widget = {
 
 type Layouts = Record<string, Widget[]>;
 
-const tabs = ["All", "About", "Projects", "Media"];
+const tabs = ["전국 사무소", "업무 사례", "변호사 매칭", "상담 센터"];
 const layouts: Layouts = {
-  All: [
+  "전국 사무소": [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
     { i: "desc", x: 0, y: 1, w: 2, h: 1 },
@@ -44,7 +44,7 @@ const layouts: Layouts = {
     { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
     { i: "news", x: 0, y: 5, w: 4, h: 1 },
   ],
-  About: [
+  "업무 사례": [
     { i: "example", x: 0, y: 0, w: 1, h: 1 },
     { i: "card", x: 1, y: 0, w: 1, h: 1 }, //업무사례
     { i: "article", x: 2, y: 0, w: 1, h: 1 },
@@ -63,7 +63,7 @@ const layouts: Layouts = {
     { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
     { i: "news", x: 0, y: 5, w: 4, h: 1 },
   ],
-  Projects: [
+  "변호사 매칭": [
     { i: "wideCard", x: 0, y: 0, w: 2, h: 2 },
     { i: "profile", x: 0, y: 1, w: 2, h: 1 },
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
@@ -81,7 +81,7 @@ const layouts: Layouts = {
     { i: "article", x: 2, y: 3, w: 1, h: 1 },
     { i: "news", x: 3, y: 3, w: 4, h: 1 },
   ],
-  Media: [
+  "상담 센터": [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "desc", x: 0, y: 0, w: 2, h: 1 },
 
@@ -102,10 +102,10 @@ const layouts: Layouts = {
   ],
 };
 const highlightMap: Record<string, string[]> = {
-  All: [],
-  About: ["card", "example", "article", "star", "mapSec"],
-  Projects: ["wideCard", "mapSec"],
-  Media: [
+  "전국 사무소": [],
+  "업무 사례": ["card", "example", "article", "star", "mapSec"],
+  "변호사 매칭": ["wideCard", "mapSec"],
+  "상담 센터": [
     "subscribe",
     "darkMode",
     "counsel",
@@ -117,8 +117,8 @@ const highlightMap: Record<string, string[]> = {
 };
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("All");
-  const [layout, setLayout] = useState(layouts["All"]);
+  const [activeTab, setActiveTab] = useState("전국 사무소");
+  const [layout, setLayout] = useState(layouts["전국 사무소"]);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [memoji, setMemoji] = useState(memoji1);
 
@@ -207,7 +207,7 @@ const Dashboard = () => {
               className={styles[item.i]}
               style={{
                 opacity:
-                  activeTab === "All" ||
+                  activeTab === "전국 사무소" ||
                   highlightMap[activeTab]?.includes(item.i)
                     ? "1"
                     : "0.3",
@@ -284,7 +284,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
@@ -302,7 +302,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
@@ -320,7 +320,7 @@ const Dashboard = () => {
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    게시물 내용 입니다. 게시물 내용 입니다.
                     <br />
                   </span>
                   <div>
