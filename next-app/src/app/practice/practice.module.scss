@@ -2,7 +2,6 @@
 
 
 .container {
-  background-color: rgb(247, 242, 242);
   padding: 47px;
   @include s.flexbox(flex, column, center, center);
 }
@@ -40,8 +39,8 @@
 
 .dashboard {
   display: grid;
-  grid-template-columns: repeat(4, 280px);
-  grid-template-rows: repeat(4, 280px);
+  grid-template-columns: repeat(4, 230px);
+  grid-template-rows: repeat(4, 230px);
   gap: 16px;
   padding: 20px;
   justify-content: center;
@@ -50,7 +49,7 @@
   div {
     border: none;
     border-radius: 32px;
-    padding: 16px;
+    padding: 20px;
     box-shadow: transparent 0 0 0 2px inset;
     opacity: 1;
   }
@@ -93,27 +92,39 @@
     background-color: #98d0ff;
   }
 
-  .star {
-    background-image: url("../../../public/images/bgImg1.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
+  .star, .card, .article {
+    @include s.flexbox(flex, column, flex-start, center);
+    background-color: s.$color-white;
+    gap: 10px;
 
-    image {
-      width: fit-content;
-      height: 100%;
+    div {
+      @include s.flexbox(flex, row, center, space-between);
+
+      width: 100%;
+      padding: 0;
     }
   }
 
-  .card {
+
+  .example {
     @include s.flexbox(flex, column, center, center);
     height: 100vh;
-    background-color: rgb(152, 208, 255);
-
+    background-color: s.$color-white;
 
     a {
       margin-top: auto;
       margin-right: auto;
     }
+  }
+
+  .qna {
+    @include s.flexbox(flex, column, center, center);
+    background-color: s.$color-white;
+  }
+
+  .notice {
+    @include s.flexbox(flex, column, center, center);
+    background-color: s.$color-white;
   }
 
   .twitterIcon {
@@ -125,25 +136,24 @@
     background-color: #ffcc80;
   }
 
-  .spotify {
+  .desc {
     background-color: #ffffff;
-    padding: 32px 38px;
-    @include s.flexbox(flex, column, center, center);
 
-
-    img {
-      width: 54px;
-      height: 54px;
-      display: flex;
-      margin-right: auto;
-      margin-bottom: auto;
+    div {
+      @include s.flexbox(flex, row, center, center);
+      gap: 30px;
     }
 
-    article {
-      @include s.flexbox(flex, column, flex-start, flex-start);
-      margin-right: auto;
-      gap: 6px;
+    section {
+      @include s.flexbox(flex, column, center, center);
+      background-color: #D9D9D9;
+      width: 150px;
+      height: 132px;
+      gap: 15px;
+      border-radius: 32px;
     }
+
+
   }
 
   .equalizer {
@@ -206,7 +216,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid transparent;
+      border: 2px solid #b2bac2;
       transition: all 0.3s ease-in-out;
     }
 
@@ -250,22 +260,55 @@
     animation-delay: 0.4s;
   }
 
-  .article {
-    background-image: url("../../../public/images/bgImg3.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
   .wideCard {
     @include s.flexbox(flex, column, flex-start, space-between);
     background-color: #ffffff;
     gap: 20px;
     font-size: 17px;
     padding: 40px 44px;
+  }
 
-    p {
-      letter-spacing: 1.5px;
-    }
+  .dropdwon {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropBtn {
+    background-color: s.$color-white;
+    color: s.$color-black;
+    padding: 10px 16px;
+    border: 1px solid #f0f2f8;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    width: inherit;
+    z-index: 1;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .content a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 3px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .content a:hover {
+    cursor: pointer;
+  }
+
+  .dropdown:hover .content {
+    display: block;
   }
 
   .textBox {
@@ -287,11 +330,6 @@
     }
   }
 
-  .darkMode {
-    @include s.flexbox(flex, column, center, center);
-    background: rgb(255, 255, 255);
-    height: 100vh;
-  }
 
   .switch {
     position: relative;
@@ -338,22 +376,21 @@
     transform: translateX(20px);
   }
 
-  .admin {
-    background-image: url("../../../public/images/bgImg5.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    position: relative;
-    padding: 0;
+  .news {
+    @include s.flexbox(flex, column, flex-start, space-between);
+    padding: 40px;
+    height: 100%;
+    gap: 20px;
+    background-color: #ffffff;
 
-    img {
-      max-width: 103%;
-      height: auto;
-      object-fit: contain;
+    p {
+      width: 100%;
+      border-bottom: 1px solid s.$color-black;
+      padding-bottom: 10px;
     }
   }
 
-  .subscribe {
+  .subscribe, .darkMode, .counsel, .qna {
     background-color: #ffffff;
     font-size: 17px;
     padding: 40px;
@@ -362,15 +399,19 @@
       @include s.flexbox(flex, column, flex-start, space-between);
       width: 100%;
       padding: 0;
-      gap: 10px;
+      gap: 13px;
     }
+
 
     p {
       font-size: 15px;
-      line-height: 26px;
-      letter-spacing: 1.5px;
       font-weight: 400;
       color: rgb(13, 17, 23);
+    }
+
+    a {
+      margin-left: auto;
+      margin-top: auto;
     }
 
     input {
@@ -394,5 +435,9 @@
       }
     }
 
+    .counsel {
+      @include s.flexbox(flex, column, flex-start, space-between);
+      background-color: #ffffff;
+    }
   }
 }

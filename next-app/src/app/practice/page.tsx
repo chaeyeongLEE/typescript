@@ -8,15 +8,10 @@ import styles from "./practice.module.scss";
 import gsap from "gsap";
 import { Flip } from "gsap/all";
 import Image from "next/image";
-import twitterIcon from "../../../public/icon/twitterIcon.png";
-import arrowIcon from "../../../public/icon/arrow.svg";
-import starBucks from "../../../public/images/bgImg2.png";
-import book from "../../../public/images/bgImg4.png";
-import admins from "../../../public/images/bgImg6.png";
-import spotify from "../../../public/icon/spotifyIcon.svg";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import memoji1 from "../../../public/images/memoji1.png";
 import memoji2 from "../../../public/images/memoji2.png";
+import arrowIcon from "../../../public/icon/arrow.svg";
 
 type Widget = {
   i: string;
@@ -32,39 +27,56 @@ const tabs = ["All", "About", "Projects", "Media"];
 const layouts: Layouts = {
   All: [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
-    { i: "map", x: 2, y: 0, w: 1, h: 1 },
-    { i: "star", x: 3, y: 0, w: 1, h: 2 },
+    { i: "map", x: 2, y: 0, w: 2, h: 2 },
+    { i: "desc", x: 0, y: 1, w: 2, h: 1 },
 
-    { i: "spotify", x: 0, y: 1, w: 1, h: 1 },
+    { i: "star", x: 3, y: 0, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 1, h: 1 },
     { i: "card", x: 1, y: 1, w: 1, h: 1 }, //트위터
-    { i: "darkMode", x: 3, y: 3, w: 1, h: 1 },
 
-    { i: "article", x: 2, y: 1, w: 1, h: 2 },
-    { i: "wideCard", x: 0, y: 3, w: 2, h: 1 },
-    { i: "admin", x: 0, y: 5, w: 2, h: 1 },
-    { i: "subscribe", x: 2, y: 5, w: 2, h: 1 },
+    { i: "darkMode", x: 3, y: 3, w: 1, h: 1 },
+    { i: "subscribe", x: 2, y: 3, w: 1, h: 1 },
+
+    { i: "qna", x: 3, y: 4, w: 1, h: 1 },
+    { i: "counsel", x: 2, y: 4, w: 1, h: 1 },
+
+    { i: "article", x: 2, y: 1, w: 1, h: 1 },
+    { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
+    { i: "news", x: 0, y: 5, w: 4, h: 1 },
   ],
   About: [
     { i: "profile", x: 0, y: 0, w: 2, h: 1 },
     { i: "map", x: 2, y: 0, w: 1, h: 1 },
     { i: "card", x: 3, y: 0, w: 1, h: 1 }, //트위터
-    { i: "spotify", x: 0, y: 1, w: 1, h: 1 },
+    {
+      i: "desc" + "",
+      x: 0,
+      y: 1,
+      w: 1,
+      h: 1,
+    },
     { i: "darkMode", x: 1, y: 2, w: 1, h: 1 },
     { i: "article", x: 2, y: 1, w: 1, h: 2 },
     { i: "star", x: 3, y: 1, w: 1, h: 2 },
     { i: "wideCard", x: 0, y: 3, w: 2, h: 1 },
-    { i: "admin", x: 0, y: 5, w: 2, h: 1 },
+    { i: "news", x: 0, y: 5, w: 2, h: 1 },
     { i: "subscribe", x: 2, y: 5, w: 2, h: 1 },
   ],
   Projects: [
-    { i: "spotify", x: 0, y: 3, w: 1, h: 1 },
+    {
+      i: "desc" + "",
+      x: 0,
+      y: 3,
+      w: 1,
+      h: 1,
+    },
     { i: "profile", x: 0, y: 1, w: 2, h: 1 },
     { i: "map", x: 2, y: 2, w: 1, h: 1 },
     { i: "card", x: 3, y: 2, w: 1, h: 1 }, //트위터
 
     { i: "darkMode", x: 1, y: 2, w: 1, h: 1 },
 
-    { i: "admin", x: 0, y: 0, w: 2, h: 1 },
+    { i: "news", x: 0, y: 0, w: 2, h: 1 },
     { i: "article", x: 2, y: 0, w: 1, h: 2 },
     { i: "star", x: 3, y: 0, w: 1, h: 2 },
 
@@ -72,7 +84,7 @@ const layouts: Layouts = {
     { i: "subscribe", x: 2, y: 5, w: 2, h: 1 },
   ],
   Media: [
-    { i: "admin", x: 0, y: 3, w: 2, h: 1 },
+    { i: "news", x: 0, y: 3, w: 2, h: 1 },
     { i: "profile", x: 0, y: 5, w: 2, h: 1 },
     { i: "subscribe", x: 2, y: 0, w: 2, h: 1 },
     { i: "wideCard", x: 0, y: 0, w: 2, h: 1 },
@@ -80,7 +92,13 @@ const layouts: Layouts = {
     { i: "darkMode", x: 2, y: 3, w: 1, h: 1 },
     { i: "map", x: 1, y: 2, w: 1, h: 1 },
     { i: "card", x: 3, y: 3, w: 1, h: 1 }, //트위터
-    { i: "spotify", x: 0, y: 1, w: 1, h: 1 },
+    {
+      i: "desc" + "",
+      x: 0,
+      y: 1,
+      w: 1,
+      h: 1,
+    },
     { i: "article", x: 2, y: 1, w: 1, h: 2 },
     { i: "star", x: 3, y: 1, w: 1, h: 2 },
   ],
@@ -88,8 +106,8 @@ const layouts: Layouts = {
 const highlightMap: Record<string, string[]> = {
   All: [],
   About: ["map", "profile", "card"],
-  Projects: ["admin", "article", "star"],
-  Media: ["subscribe", "wideCard", "spotify"],
+  Projects: ["news", "article", "star"],
+  Media: ["subscribe", "wideCard", "desc" + ""],
 };
 
 const Dashboard = () => {
@@ -168,8 +186,8 @@ const Dashboard = () => {
           className="layout"
           layout={layout}
           cols={4}
-          rowHeight={280}
-          width={1180}
+          rowHeight={230}
+          width={1100}
           draggableCancel=".no-drag"
           isDraggable={true}
           isResizable={false}>
@@ -191,8 +209,8 @@ const Dashboard = () => {
                       alt="memogi1"
                       src={memoji}
                       style={{
-                        width: "90px",
-                        height: "90px",
+                        width: "60px",
+                        height: "60px",
                       }}
                       id="memoji"
                     />
@@ -203,112 +221,191 @@ const Dashboard = () => {
                       className="no-drag"
                       handleClick={isToggleClick}></CustomButton>
                   </div>
+                  <h2>대한민국 7위 로펌 법무법인 YK</h2>
                   <p>
-                    I’m <span style={{ fontSize: "40px" }}>nev</span>, a
-                    developer and product designer from Ireland. I'm interested
-                    in React, Node, Product Design, Jamstack, Startups,
-                    Cryptocurrencies and Music.
+                    당신이 필요로 하는 모든 곳에 YK가 있습니다.
+                    <br />내 일처럼 진심을 다하는 변호사를 만나보세요.
                   </p>
                 </>
               )}
               {item.i === "map" && <div>Map</div>}
-              {item.i === "star" && (
-                <Image
-                  alt="starBucks"
-                  src={starBucks}
-                  style={{ width: "107%", height: "100%" }}
-                />
+              {item.i === "example" && (
+                <h4 style={{ fontWeight: 700 }}>
+                  YK는 16,500+ 명에게 희망이 되었습니다.
+                  <br />
+                  <br /> 이번엔 당신이 이길 차례입니다.
+                </h4>
               )}
-              {item.i === "spotify" && (
-                <>
-                  <Image alt="spotify" src={spotify} />
-                  <article>
-                    <div className={styles.equalizer}>
-                      <span className={styles.bar}></span>
-                      <span className={styles.bar}></span>
-                      <span className={styles.bar}></span>
-                      <p>Offline. Last played</p>
-                    </div>
-                    <h2>I Don't Belong</h2>
-                    <p style={{ letterSpacing: "1.2px" }}>Fontaines D.C.</p>
-                  </article>
-                </>
+
+              {item.i === "desc" && (
+                <div>
+                  <section>
+                    <span>YK변호사</span>
+                    <p>369명</p>
+                  </section>
+                  <section>
+                    <span>누적 성공사례</span>
+                    <p>12,254건</p>
+                  </section>
+                  <section>
+                    <span>업무분야</span>
+                    <p>00개</p>
+                  </section>
+
+                  {/*<Image alt="desc
+                  " src={desc
+                  } />*/}
+                  {/*<article>*/}
+                  {/*  <div className={styles.equalizer}>*/}
+                  {/*    <span className={styles.bar}></span>*/}
+                  {/*    <span className={styles.bar}></span>*/}
+                  {/*    <span className={styles.bar}></span>*/}
+                  {/*    <p>Offline. Last played</p>*/}
+                  {/*  </div>*/}
+                  {/*  <h2>I Don't Belong</h2>*/}
+                  {/*  <p style={{ letterSpacing: "1.2px" }}>Fontaines D.C.</p>*/}
+                  {/*</article>*/}
+                </div>
               )}
               {item.i === "card" && (
                 <>
-                  <Image
-                    alt="twitter"
-                    src={twitterIcon}
-                    className={styles.twitterIcon}
-                  />
-                  <a className={`${styles.arrow} no-drag`}>
-                    <Image alt="" src={arrowIcon} />
-                  </a>
+                  <h3>업무사례1</h3>
+
+                  <span>
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                  </span>
+                  <div>
+                    <p>업무사례 소송 결과</p>
+                    <a className={`${styles.arrow} no-drag`}>
+                      <Image alt="" src={arrowIcon} />
+                    </a>
+                  </div>
                 </>
               )}
               {item.i === "article" && (
-                <Image
-                  alt="book"
-                  src={book}
-                  style={{ width: "107%", height: "100%" }}
-                />
+                <>
+                  <h3>업무사례2</h3>
+
+                  <span>
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                  </span>
+                  <div>
+                    <p>업무사례 소송 결과</p>
+                    <a className={`${styles.arrow} no-drag`}>
+                      <Image alt="" src={arrowIcon} />
+                    </a>
+                  </div>
+                </>
+              )}
+              {item.i === "star" && (
+                <>
+                  <h3>업무사례3</h3>
+
+                  <span>
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
+                    <br />
+                  </span>
+                  <div>
+                    <p>업무사례 소송 결과</p>
+                    <a className={`${styles.arrow} no-drag`}>
+                      <Image alt="" src={arrowIcon} />
+                    </a>
+                  </div>
+                </>
               )}
               {item.i === "wideCard" && (
                 <>
-                  <h2>How it started vs. how it's going</h2>
+                  <h2>변호사 매칭</h2>
                   <span>
-                    A short personal history as it relates to design and
-                    development, and how I've found value in the cross-section
-                    between both disciplines.
+                    좋은 변호사 찾기, 아직도 발품 팔고 계신가요? <br />내 상황에
+                    꼭 맞는 변호사를 확인해보세요.
                   </span>
                   <aside className={styles.box}>
+                    <div className={`${styles.dropdown} no-drag`}>
+                      <button className={styles.dropBtn}>분야 선택</button>
+                      <div className={styles.content}>
+                        <a href="#">형사</a>
+                      </div>
+                    </div>
+                    <div className={`${styles.dropdown} no-drag`}>
+                      <button className={styles.dropBtn}>세부 분야 선택</button>
+                      <div className={styles.content}>
+                        <a href="#">성범죄</a>
+                      </div>
+                    </div>
                     <CustomButton
-                      title="Read more"
+                      title="변호사 찾기"
                       type="button"
                       disabled={false}
                       className="no-drag"
                       handleClick={isSubscribeClick}>
                       Subscribe
                     </CustomButton>
-                    <p>Feb 7, 2025</p>
                   </aside>
                 </>
               )}
               {item.i === "darkMode" && (
-                <label className={`${styles.switch} no-drag`}>
-                  <input type="checkbox" />
-                  <span className={styles.slider}></span>
-                </label>
-              )}
-              {item.i === "admin" && (
-                <Image alt="admins" src={admins} style={{ width: "107%" }} />
+                <div>
+                  <h2>의뢰인 후기</h2>
+                  <p>[분야 · 세부 분야] 의뢰인 후기 제목 입니다.</p>
+                </div>
+                // <label className={`${styles.switch} no-drag`}>
+                //   <input type="checkbox" />
+                //   <span className={styles.slider}></span>
+                // </label>
               )}
               {item.i === "subscribe" && (
                 <div>
-                  <h2>Shall I keep you in the loop?</h2>
+                  <h2>Q&A 라운지</h2>
+
                   <p>
-                    Content includes articles, early access to products, and{" "}
+                    소송이 처음이라 걱정되시죠?
                     <br />
-                    ongoing learnings.
+                    분야별 변호사가 정확하게 답변해드립니다.
                   </p>
-                  <input
-                    type="text"
-                    placeholder="Email address"
-                    className="no-drag"
-                  />
-                  <aside>
-                    <CustomButton
-                      title="Subscribe"
-                      type="button"
-                      disabled={false}
-                      className="no-drag"
-                      handleClick={isSubscribeClick}></CustomButton>
-                    <p>
-                      You'll be subscriber number{" "}
-                      <span style={{ fontSize: "30px" }}>542</span>
-                    </p>
-                  </aside>
+                  <a className={`${styles.arrow} no-drag`}>
+                    <Image alt="" src={arrowIcon} />
+                  </a>
                 </div>
+              )}
+              {item.i === "counsel" && (
+                <div>
+                  <h2>카카오톡 상담</h2>
+                  <p>지금 신청하기</p>
+                  <a className={`${styles.arrow} no-drag`}>
+                    <Image alt="" src={arrowIcon} />
+                  </a>
+                </div>
+              )}
+              {item.i === "qna" && (
+                <div>
+                  <h2>365일 1:1 상담</h2>
+                  <p>지금 신청하기</p>
+                  <a className={`${styles.arrow} no-drag`}>
+                    <Image alt="" src={arrowIcon} />
+                  </a>
+                </div>
+              )}
+              {item.i === "news" && (
+                <>
+                  <h2>소식과 자료</h2>
+                  <p>
+                    <span style={{ fontWeight: 700 }}> 언론보도 </span> 뉴스레터
+                    칼럼 법률 정보
+                  </p>
+                  <span>
+                    [언론보도] 게시글 제목 입니다. 게시글 제목 입니다. 게시글
+                    제목입니다. 게시글 제목 입니다. 게시글 제목 입니다
+                  </span>
+                </>
               )}
             </div>
           ))}
