@@ -85,7 +85,24 @@
 
   .mapSec {
     @include s.flexbox(flex, column, center, center);
-    background-color: #98d0ff;
+    background-image: url("../../../public/images/koreaMap.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+    color: #ffffff;
+  }
+
+  .zoomWrap {
+    position: absolute;
+    bottom: 48px;
+    left: 96%;
+    transform: translateX(-50%);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 3;
+    width: 42px;
   }
 
   .star, .card, .article {
@@ -266,6 +283,7 @@
   }
 
   .dropBtn {
+    @include s.flexbox(flex, row, center, space-between);
     background-color: s.$color-white;
     color: s.$color-black;
     padding: 10px;
@@ -289,10 +307,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    height: 3px;
+    padding: 8px;
     text-decoration: none;
     color: black;
+    font-size: 13px;
   }
 
   .content a:hover {
@@ -319,18 +337,17 @@
 
     div {
       padding: 0;
-      width: 110px;
-    }
-
-    button {
-      width: 110px;
-
-      span {
-        padding-left: 10px;
-      }
+      width: 140px;
     }
   }
 
+  .seachBtn {
+    width: 142px;
+
+    span {
+      margin: 0 auto;
+    }
+  }
 
   .switch {
     position: relative;
@@ -406,8 +423,11 @@
     }
 
     a {
-      margin-left: auto;
-      margin-top: auto;
+      position: absolute;
+      bottom: 22px;
+      right: 22px;
+      //margin-left: auto;
+      //margin-top: auto;
     }
 
     input {
@@ -436,6 +456,16 @@
       background-color: #ffffff;
     }
 
+    .carouselWrapper {
+      width: calc(93%);
+      height: calc(90%);
+      margin: 0 10px;
+
+      .slick-prev::before,
+      .slick-next::before {
+        color: #ff59e3;
+      }
+    }
   }
 
 }

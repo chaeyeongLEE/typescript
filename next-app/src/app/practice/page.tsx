@@ -9,9 +9,12 @@ import gsap from "gsap";
 import { Flip } from "gsap/all";
 import Image from "next/image";
 import CustomButton from "@/components/CustomButton/CustomButton";
-import memoji1 from "../../../public/images/memoji1.png";
-import memoji2 from "../../../public/images/memoji2.png";
+import memoji1 from "../../../public/images/ciImg.webp";
+import memoji2 from "../../../public/images/ciImg2.webp";
 import arrowIcon from "../../../public/icon/arrow.svg";
+import arrowDownIcon from "../../../public/icon/arrow_down.svg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type Widget = {
   i: string;
@@ -21,7 +24,9 @@ type Widget = {
   h: number;
 };
 
-type Layouts = Record<string, Widget[]>;
+type Layouts = {
+  [name: string]: Widget[];
+};
 
 const tabs = [
   "전국 사무소",
@@ -36,18 +41,18 @@ const layouts: Layouts = {
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
     { i: "desc", x: 0, y: 1, w: 2, h: 1 },
 
-    { i: "star", x: 3, y: 0, w: 1, h: 1 },
-    { i: "example", x: 0, y: 1, w: 1, h: 1 },
-    { i: "card", x: 1, y: 1, w: 1, h: 1 }, //트위터
+    // { i: "star", x: 3, y: 0, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 2, h: 1 },
+    // { i: "card", x: 1, y: 1, w: 1, h: 1 },
 
-    { i: "darkMode", x: 3, y: 3, w: 1, h: 1 },
-    { i: "subscribe", x: 2, y: 3, w: 1, h: 1 },
+    { i: "darkMode", x: 1, y: 3, w: 1, h: 1 }, //의뢰인 후기
+    { i: "subscribe", x: 0, y: 3, w: 1, h: 1 },
 
-    { i: "qna", x: 3, y: 4, w: 1, h: 1 },
-    { i: "counsel", x: 2, y: 4, w: 1, h: 1 },
+    { i: "qna", x: 1, y: 4, w: 1, h: 1 },
+    { i: "counsel", x: 0, y: 4, w: 1, h: 1 },
 
-    { i: "article", x: 2, y: 1, w: 1, h: 1 },
-    { i: "wideCard", x: 0, y: 3, w: 2, h: 2 },
+    { i: "article", x: 2, y: 1, w: 2, h: 1 },
+    { i: "wideCard", x: 2, y: 3, w: 2, h: 2 }, //변호사 매칭
 
     { i: "broad", x: 0, y: 5, w: 1, h: 1 },
     { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
@@ -176,7 +181,15 @@ const Dashboard = () => {
   const [layout, setLayout] = useState(layouts["전국 사무소"]);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [memoji, setMemoji] = useState(memoji1);
-
+  const settings = {
+    lazyLoad: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 2,
+    arrows: true,
+  };
   useEffect(() => {
     gsap.registerPlugin(Flip);
   }, []);
@@ -202,7 +215,7 @@ const Dashboard = () => {
   }
 
   function isToggleClick() {
-    const memojiElement = document.getElementById("memoji"); // ✅ 이미지 요소 가져오기
+    const memojiElement = document.getElementById("memoji");
 
     if (memojiElement) {
       gsap.to(memojiElement, {
@@ -248,10 +261,10 @@ const Dashboard = () => {
           layout={layout}
           cols={4}
           rowHeight={230}
-          width={1100}
+          width={970}
           draggableCancel=".no-drag"
           style={{
-            width: "1050px",
+            width: "970px",
             margin: "0 auto",
           }}
           isDraggable={true}
@@ -274,8 +287,8 @@ const Dashboard = () => {
                       alt="memogi1"
                       src={memoji}
                       style={{
-                        width: "60px",
-                        height: "60px",
+                        maxWidth: "100px",
+                        maxHeight: "68px",
                       }}
                       id="memoji"
                     />
@@ -293,7 +306,12 @@ const Dashboard = () => {
                   </p>
                 </>
               )}
-              {item.i === "mapSec" && <div>mapSec</div>}
+              {item.i === "mapSec" && (
+                <>
+                  {/*<Map />*/}
+                  <p></p>
+                </>
+              )}
               {item.i === "example" && (
                 <h4 style={{ fontWeight: 700 }}>
                   YK는 16,500+ 명에게 희망이 되었습니다.
@@ -333,8 +351,38 @@ const Dashboard = () => {
                 </div>
               )}
               {item.i === "card" && (
+                // <div className={styles.carouselWrapper}>
+                //   <Slider {...settings}>
+                //     <div>
+                //       <p>업무사례 소송 결과1</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //     <div>
+                //       <p>업무사례 소송 결과2</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //     <div>
+                //       <p>업무사례 소송 결과3</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //   </Slider>
+                //   {/*<h2>업무사례1</h2>*/}
+                //
+                //   {/*<span>*/}
+                //   {/*  게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.*/}
+                //   {/*  <br />*/}
+                //   {/*  게시물 내용 입니다. 게시물 내용 입니다.*/}
+                //   {/*  <br />*/}
+                //   {/*</span>*/}
+                // </div>
                 <>
-                  <h3>업무사례1</h3>
+                  <h2>업무사례1</h2>
 
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
@@ -352,7 +400,7 @@ const Dashboard = () => {
               )}
               {item.i === "article" && (
                 <>
-                  <h3>업무사례2</h3>
+                  <h2>업무사례2</h2>
 
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
@@ -367,10 +415,40 @@ const Dashboard = () => {
                     </a>
                   </div>
                 </>
+                // <div className={`${styles.carouselWrapper} no-drag`}>
+                //   <Slider {...settings}>
+                //     <div>
+                //       <p>업무사례 소송 결과1</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //     <div>
+                //       <p>업무사례 소송 결과2</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //     <div>
+                //       <p>업무사례 소송 결과3</p>
+                //       <a className={`${styles.arrow} no-drag`}>
+                //         <Image alt="" src={arrowIcon} />
+                //       </a>
+                //     </div>
+                //   </Slider>
+                //   {/*<h2>업무사례1</h2>*/}
+                //
+                //   {/*<span>*/}
+                //   {/*  게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.*/}
+                //   {/*  <br />*/}
+                //   {/*  게시물 내용 입니다. 게시물 내용 입니다.*/}
+                //   {/*  <br />*/}
+                //   {/*</span>*/}
+                // </div>
               )}
               {item.i === "star" && (
                 <>
-                  <h3>업무사례3</h3>
+                  <h2>업무사례3</h2>
 
                   <span>
                     게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
@@ -395,13 +473,19 @@ const Dashboard = () => {
                   </span>
                   <aside className={styles.box}>
                     <div className={`${styles.dropdown} no-drag`}>
-                      <button className={styles.dropBtn}>분야 선택</button>
+                      <button className={styles.dropBtn}>
+                        분야 선택
+                        <Image alt="" src={arrowDownIcon} />
+                      </button>
                       <div className={styles.content}>
                         <a href="#">형사</a>
                       </div>
                     </div>
                     <div className={`${styles.dropdown} no-drag`}>
-                      <button className={styles.dropBtn}>세부 분야 선택</button>
+                      <button className={styles.dropBtn}>
+                        세부 분야 선택
+                        <Image alt="" src={arrowDownIcon} />
+                      </button>
                       <div className={styles.content}>
                         <a href="#">성범죄</a>
                       </div>
@@ -410,7 +494,7 @@ const Dashboard = () => {
                       title="변호사 찾기"
                       type="button"
                       disabled={false}
-                      className="no-drag"
+                      className={`${styles.seachBtn} no-drag`}
                       handleClick={isSubscribeClick}>
                       변호사 찾기
                     </CustomButton>
