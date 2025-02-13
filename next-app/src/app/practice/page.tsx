@@ -15,6 +15,7 @@ import arrowIcon from "../../../public/icon/arrow.svg";
 import arrowDownIcon from "../../../public/icon/arrow_down.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 type Widget = {
   i: string;
@@ -33,7 +34,7 @@ const tabs = [
   "업무 사례",
   "변호사 매칭",
   "상담 센터",
-  "임시 테스트",
+  // "임시 테스트",
 ];
 const layouts: Layouts = {
   "전국 사무소": [
@@ -59,10 +60,10 @@ const layouts: Layouts = {
     { i: "news", x: 2, y: 5, w: 2, h: 1 },
   ],
   "업무 사례": [
-    { i: "example", x: 0, y: 0, w: 1, h: 1 },
-    { i: "card", x: 1, y: 0, w: 1, h: 1 }, //업무사례
-    { i: "article", x: 2, y: 0, w: 1, h: 1 },
-    { i: "star", x: 3, y: 0, w: 1, h: 1 },
+    { i: "example", x: 0, y: 0, w: 2, h: 1 }, // yk는 ~ 희망이되었습니다.
+    // { i: "card", x: 1, y: 0, w: 1, h: 1 },
+    { i: "article", x: 2, y: 0, w: 2, h: 1 }, //업무사례
+    // { i: "star", x: 3, y: 0, w: 1, h: 1 },
 
     { i: "profile", x: 0, y: 1, w: 2, h: 1 },
     { i: "mapSec", x: 2, y: 1, w: 2, h: 2 },
@@ -85,16 +86,16 @@ const layouts: Layouts = {
     { i: "mapSec", x: 2, y: 0, w: 2, h: 2 },
     { i: "desc", x: 0, y: 1, w: 2, h: 1 },
 
-    { i: "star", x: 3, y: 2, w: 1, h: 1 },
-    { i: "example", x: 0, y: 1, w: 1, h: 1 },
-    { i: "card", x: 1, y: 1, w: 1, h: 1 },
+    // { i: "star", x: 3, y: 2, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 2, h: 1 },
+    { i: "article", x: 2, y: 3, w: 2, h: 1 },
+    // { i: "card", x: 1, y: 1, w: 1, h: 1 },
 
     { i: "darkMode", x: 3, y: 0, w: 1, h: 1 }, //의뢰인 후기
     { i: "subscribe", x: 2, y: 0, w: 1, h: 1 }, //Q&A라운지
     { i: "qna", x: 3, y: 0, w: 1, h: 1 }, //1:1상담
     { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
 
-    { i: "article", x: 2, y: 3, w: 1, h: 1 },
     { i: "broad", x: 0, y: 5, w: 1, h: 1 },
     { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
     { i: "news", x: 2, y: 5, w: 2, h: 1 },
@@ -106,16 +107,16 @@ const layouts: Layouts = {
     { i: "wideCard", x: 0, y: 1, w: 2, h: 2 },
     { i: "mapSec", x: 2, y: 1, w: 2, h: 2 },
 
-    { i: "star", x: 3, y: 2, w: 1, h: 1 },
-    { i: "example", x: 0, y: 1, w: 1, h: 1 },
-    { i: "card", x: 1, y: 1, w: 1, h: 1 },
+    // { i: "star", x: 3, y: 2, w: 1, h: 1 },
+    { i: "example", x: 0, y: 1, w: 2, h: 1 },
+    // { i: "card", x: 1, y: 1, w: 1, h: 1 },
+    { i: "article", x: 2, y: 3, w: 2, h: 1 },
 
     { i: "darkMode", x: 3, y: 0, w: 1, h: 1 }, //의뢰인 후기
     { i: "subscribe", x: 2, y: 0, w: 1, h: 1 }, //Q&A라운지
     { i: "qna", x: 3, y: 0, w: 1, h: 1 }, //1:1상담
     { i: "counsel", x: 2, y: 1, w: 1, h: 1 }, //카카오톡상담
 
-    { i: "article", x: 2, y: 3, w: 1, h: 1 },
     { i: "broad", x: 0, y: 5, w: 1, h: 1 },
     { i: "youtube", x: 1, y: 5, w: 1, h: 1 },
     { i: "news", x: 2, y: 5, w: 2, h: 1 },
@@ -182,12 +183,14 @@ const Dashboard = () => {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [memoji, setMemoji] = useState(memoji1);
   const settings = {
+    dots: true,
     lazyLoad: true,
     infinite: true,
+    initialSlide: 0, //초기슬라이드 0번째부터
+    draggable: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: 2,
     arrows: true,
   };
   useEffect(() => {
@@ -351,36 +354,6 @@ const Dashboard = () => {
                 </div>
               )}
               {item.i === "card" && (
-                // <div className={styles.carouselWrapper}>
-                //   <Slider {...settings}>
-                //     <div>
-                //       <p>업무사례 소송 결과1</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //     <div>
-                //       <p>업무사례 소송 결과2</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //     <div>
-                //       <p>업무사례 소송 결과3</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //   </Slider>
-                //   {/*<h2>업무사례1</h2>*/}
-                //
-                //   {/*<span>*/}
-                //   {/*  게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.*/}
-                //   {/*  <br />*/}
-                //   {/*  게시물 내용 입니다. 게시물 내용 입니다.*/}
-                //   {/*  <br />*/}
-                //   {/*</span>*/}
-                // </div>
                 <>
                   <h2>업무사례1</h2>
 
@@ -399,52 +372,23 @@ const Dashboard = () => {
                 </>
               )}
               {item.i === "article" && (
-                <>
-                  <h2>업무사례2</h2>
-
-                  <span>
-                    게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.
-                    <br />
-                    게시물 내용 입니다. 게시물 내용 입니다.
-                    <br />
-                  </span>
-                  <div>
-                    <p>업무사례 소송 결과</p>
-                    <a className={`${styles.arrow} no-drag`}>
-                      <Image alt="" src={arrowIcon} />
-                    </a>
-                  </div>
-                </>
-                // <div className={`${styles.carouselWrapper} no-drag`}>
-                //   <Slider {...settings}>
-                //     <div>
-                //       <p>업무사례 소송 결과1</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //     <div>
-                //       <p>업무사례 소송 결과2</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //     <div>
-                //       <p>업무사례 소송 결과3</p>
-                //       <a className={`${styles.arrow} no-drag`}>
-                //         <Image alt="" src={arrowIcon} />
-                //       </a>
-                //     </div>
-                //   </Slider>
-                //   {/*<h2>업무사례1</h2>*/}
-                //
-                //   {/*<span>*/}
-                //   {/*  게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용 입니다.*/}
-                //   {/*  <br />*/}
-                //   {/*  게시물 내용 입니다. 게시물 내용 입니다.*/}
-                //   {/*  <br />*/}
-                //   {/*</span>*/}
-                // </div>
+                <div className={`${styles.carouselWrapper} no-drag`}>
+                  <Slider {...settings}>
+                    {[1, 2, 3].map((num) => (
+                      <div key={num}>
+                        <h2>업무사례{num}</h2>
+                        <span>
+                          게시물 내용 입니다. 게시물 내용 입니다. 게시물 내용
+                          입니다.
+                          <br />
+                          게시물 내용 입니다. 게시물 내용 입니다.
+                          <br />
+                        </span>
+                        <p>업무사례 소송 결과{num}</p>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
               )}
               {item.i === "star" && (
                 <>

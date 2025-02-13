@@ -8,7 +8,7 @@ $button-secondary-hover: #f2f2f2;
 @use "@/styles/index" as s;
 
 .page {
-  @include s.flexbox(grid,column, center, center);
+  @include s.flexbox(grid, column, center, center);
   grid-template-rows: 20px 1fr 20px;
   min-height: 100svh;
   padding: $page-padding;
@@ -75,6 +75,7 @@ $button-secondary-hover: #f2f2f2;
           min-width: 180px;
         }
       }
+
       span {
         @include s.flexbox;
         color: s.$color-white;
@@ -101,4 +102,5 @@ $button-secondary-hover: #f2f2f2;
       }
     }
   }
+
 }

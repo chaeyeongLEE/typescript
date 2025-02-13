@@ -118,6 +118,16 @@
     }
   }
 
+  .article div {
+    border-radius: 0;
+    width: 100%;
+    padding: 0;
+
+  }
+
+  .carouselWrapper, .carouselWrapper div {
+    border-radius: 0;
+  }
 
   .example {
     @include s.flexbox(flex, column, center, center);
@@ -456,16 +466,7 @@
       background-color: #ffffff;
     }
 
-    .carouselWrapper {
-      width: calc(93%);
-      height: calc(90%);
-      margin: 0 10px;
 
-      .slick-prev::before,
-      .slick-next::before {
-        color: #ff59e3;
-      }
-    }
   }
 
 }
