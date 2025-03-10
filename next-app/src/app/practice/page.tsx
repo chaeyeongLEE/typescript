@@ -199,18 +199,7 @@ const Dashboard = () => {
 
   const changeLayout = (tab: string) => {
     setActiveTab(tab);
-    if (!gridRef.current) return;
-
-    const state = Flip.getState(gridRef.current);
     setLayout(layouts[tab]);
-    Flip.from(state, {
-      duration: 1.2,
-      ease: "power2.inOut",
-      absolute: true,
-      scale: true,
-      stagger: 0.05,
-      fade: true,
-    });
   };
 
   function isSubscribeClick() {
@@ -258,7 +247,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div ref={gridRef} className={styles.dashboard}>
+      <div className={styles.dashboard}>
         <GridLayout
           className="layout"
           layout={layout}
@@ -311,7 +300,11 @@ const Dashboard = () => {
               )}
               {item.i === "mapSec" && (
                 <>
-                  {/*<Map />*/}
+                  {/*<Image*/}
+                  {/*  alt="map*/}
+                  {/*"*/}
+                  {/*  src={map}*/}
+                  {/*/>*/}
                   <p></p>
                 </>
               )}
